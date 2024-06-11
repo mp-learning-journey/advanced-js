@@ -82,9 +82,72 @@ const statusConst = 87;
 
     // foreach: Use it when you need to loop through every element in the array
     const books = ["dani", "dee","silvet"];
-    books.forEach((value) => {
-        console.log(value)
+    // books.forEach((value) => {
+    //     console.log(value)
+    // })
+
+    // Arrays, Objects, String
+
+    const $array = [ 32, 'yeye' ];
+    const $array2 = [ 32, 'yeye', 54 ];
+
+    output = $array.length
+    // Create an array of books and perform 15 different operations on them
+    console.log(output);
+
+    $array.pop();
+    $array2.pop();
+
+    output = $array.length
+
+    const lucky = {
+        name: 'Lucky',
+        age: 23,
+        sex: 'male',
+        favouriteFood: ['foos', 'gfgff'],
+        calc: () => {
+            return 2 + 2;
+        }
+    };
+
+    // console.log(lucky.calc())
+    // console.log(lucky.name);
+    console.log(lucky['name']);
+    // console.log(typeof(lucky))
+    // console.log(Object.keys(lucky));
+    // console.log(Object.values(lucky));
+
+    const luckyKeys = Object.keys(lucky);
+
+    luckyKeys.forEach(function(key) {
+        console.log(lucky[key]);
     })
 
+    for(const key in lucky){
+        console.log(lucky[key])
+    }
 
-// console.log(output);
+    const users = [
+        {
+            id: 1,
+            name: 'Lucky',
+            age: 23,
+            sex: 'male',
+            favouriteFood: ['foos', 'gfgff']
+        },
+        {
+            name: 'Dami',
+            age: 26,
+            sex: 'male',
+            favouriteFood: ['foos', 'gfgff']
+        }
+    ]
+
+    // users.forEach(function(value){
+    //     console.log(`My name is ${value.name}, I am ${value.age} years old`);
+    // })
+
+
+
+
+    // console.log(output);
