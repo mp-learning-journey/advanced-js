@@ -3,15 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
+        <style>
+            h1.in-active {
+                display: none;
+            }
+        </style>
     </head>
     <body>
-        <h1 id="firstH1">Hello</h1>
-        <h1>Hello 2</h1>
+        <h1 class=""  id="firstH1">Hello</h1>
+        <h1 class="thde gdtdt in-active" id="secondH1">SHOW OR HIDE</h1>
         <h1>Hello 3</h1>
         <div class="div">div 1</div>
         <div class="div">fiv 2</div>
         <div class="div">div 3</div>
+        <button onclick="clicked()">Click me for Hello</button>
         <button id="btn1">Click me for Alert</button>
+        <button data-id="" data-dami="dami data" id="togglebtn">Toggle Show or Hide</button>
+
         <script src="dom.js"></script>
+        <script>
+            function clicked() {
+                alert("Helloo");
+            }
+        </script>
     </body>
 </html>
