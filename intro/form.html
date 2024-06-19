@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form with JavaScript</title>
+
+    <style>
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        .error {
+            border: 2px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Register Now</h1>
+    <form id="registerForm">
+        <div>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <span>Username is required</span>
+        </div>
+
+        <input type="email" id="email" name="email" placeholder="Email">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <button type="submit">Register</button>
+    </form>
+
+    <script src="form.js"></script>
+</body>
+</html>
