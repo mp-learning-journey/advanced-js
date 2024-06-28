@@ -5,8 +5,6 @@
     <title>Interactive FAQ Section</title>
     <style>
         .faq-container {
-            width: 80%;
-            margin: auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -34,24 +32,72 @@
         .faq-item.active p {
             display: block;
         }
+
+        form {
+            margin: auto;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .container {
+            width: 80%;
+            height: 100%;
+            margin: auto;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+        }
     </style>
 </head>
 <body>
-    <div class="faq-container">
-        <h1>FAQ</h1>
-        <div class="faq-item">
-            <h3>What is JavaScript?</h3>
-            <p>JavaScript is a versatile programming language used to add interactivity to web pages.</p>
+
+    <div class="container">
+        <div class="form">
+            <form id="faq-form">
+                <h1>Add New FAQ</h1>
+                <input class="input" type="text" id="question" name="question" placeholder="Question" required>
+                <textarea class="input" name="answer" required></textarea>
+                <button type="submit">Add FAQ</button>
+            </form>
+
         </div>
-        <div class="faq-item">
-            <h3>How do I include JavaScript in my web page?</h3>
-            <p>You can include JavaScript in your web page by using the tag. </p>
-        </div>
-        <div class="faq-item">
-            <h3>What are variables in JavaScript?</h3>
-            <p>Variables in JavaScript are used to store data values that can be changed later in the code.</p>
+
+        <div class="faq-container">
+            <h1>FAQ</h1>
+            <div id="faq-items">
+                <div class="faq-item">
+                    <h3>What is JavaScript?</h3>
+                    <p>JavaScript is a versatile programming language used to add interactivity to web pages.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I include JavaScript in my web page?</h3>
+                    <p>You can include JavaScript in your web page by using the tag. </p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are variables in JavaScript?</h3>
+                    <p>Variables in JavaScript are used to store data values that can be changed later in the code.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="faq.js"></script>
+
+    <script src="faq.js">
+    </script>
 </body>
 </html>

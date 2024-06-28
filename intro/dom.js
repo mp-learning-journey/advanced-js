@@ -26,6 +26,8 @@ button1.onclick = function () {
     alert("Auch! Stop!");
 }
 
+toggleBtn.children
+
 console.log(secondH1.className);
 // toggleBtn.addEventListener('click', function () {
 //     if(secondH1.className === ""){
