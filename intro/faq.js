@@ -1,5 +1,10 @@
 const faqItem = document.querySelectorAll(".faq-item");
 const faqItems = document.getElementById('faq-items');
+const faqEditButton = document.getElementsByClassName('edit');
+const faqHeading = document.getElementsByClassName('faq-heading');
+const form = document.getElementById("faq-form");
+const editForm = document.getElementById("edit-faq-form");
+
 let faqs = [];
 
 const persistedFaq = JSON.parse(localStorage.getItem("faqs"));
@@ -10,11 +15,34 @@ if(persistedFaq) {
     })
 }
 
-faqItem.forEach(function(item) {
-    item.addEventListener('click', toggleFaq)
+for(let x = 0; x < faqEditButton.length; x++) {
+    // Toggle click
+    faqItem[x].addEventListener('click', toggleFaq);
+
+    // Edit click
+    faqEditButton[x].addEventListener('click', function (e) {
+        e.preventDefault()
+        document.getElementById('editQuestion').value = faqHeading[x].innerText
+
+        // add the heading id to the form data-id for easy update
+        editForm.setAttribute('data-id', x);
+    })
+}
+
+// update faq form
+editForm.addEventListener('submit', function (e){
+    e.preventDefault();
+    const question = this.editQuestion.value;
+
+    const index = this.getAttribute('data-id');
+    faqHeading[index].innerText = question;
+
+    // clear input and form
+    editForm.reset();
+    this.removeAttribute('data-id');
 })
 
-const form = document.getElementById("faq-form");
+// Add Faq
 form.addEventListener('submit', function (e){
     e.preventDefault()
     const question = this.question.value;
@@ -58,3 +86,10 @@ function toggleFaq(element) {
     })
     element.currentTarget.classList.toggle('active');
 }
+
+const var1 = "dddd";
+const var2 = "jgmg";
+
+const string = `hhghghghghgh ${var1} ngnnvhffb ${var2}`
+
+// Event bubbling

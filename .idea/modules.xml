@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///var/www/html/globwealth/.idea/globwealth.iml" filepath="/var/www/html/globwealth/.idea/globwealth.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jswnnu.iml" filepath="$PROJECT_DIR$/.idea/jswnnu.iml" />
     </modules>
   </component>

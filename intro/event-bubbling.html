@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-    <div id="message">Bubbling events</div>
+    <p id="message">Bubbling events</p>
+
     <div id="output">
         1
         <div>
@@ -14,24 +15,39 @@
                 3
                 <div>
                     4
-                    <div>
-                        5
-                        <div>
-                            6
-                        </div>
+                    <div>5
+                        <div>6</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
-        function bubble() {
-            console.log(this.innerText);
-        }
         let divs = document.getElementsByTagName("div");
-        for (let i = 0; i < divs.length; i++) {
-            divs[i].addEventListener("click", bubble, true);
-        }
+        document.getElementById('message').addEventListener('click', function (){
+            divs[7].insertAdjacentHTML('afterend','<div>7</div')
+        })
+
+        // for (let i = 0; i < divs.length; i++) {
+        //     divs[i].addEventListener("click", function () {
+        //         // event.stopPropagation();
+        //         // event.preventDefault();
+        //
+        //         console.log(this.innerText);
+        //     });
+        // }
+
+        document.body.addEventListener("click", function (e) {
+            // event.stopPropagation();
+            // event.preventDefault();
+
+            // console.log(this.innerText);
+            if(e.target.id !== "output") {
+                console.log(e.target.innerText);
+            }
+
+        });
     </script>
 </body>
 </html>

@@ -12,6 +12,7 @@
         .faq-item {
             margin: 10px 0;
             cursor: pointer;
+            width: 90%;
         }
         .faq-item h3 {
             margin: 0;
@@ -63,6 +64,19 @@
             /*justify-content: center;*/
             /*align-items: center;*/
         }
+
+        .heading {
+            display: flex;
+            width: 100%;
+        }
+
+        .heading h3 {
+            width: 90%;
+        }
+
+        .heading button {
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -76,22 +90,30 @@
                 <button type="submit">Add FAQ</button>
             </form>
 
+            <form id="edit-faq-form">
+                <h1>Update FAQ</h1>
+                <input class="input" type="text" id="editQuestion" name="editQuestion" required>
+                <button type="submit">Update FAQ</button>
+            </form>
         </div>
 
         <div class="faq-container">
             <h1>FAQ</h1>
             <div id="faq-items">
-                <div class="faq-item">
-                    <h3>What is JavaScript?</h3>
-                    <p>JavaScript is a versatile programming language used to add interactivity to web pages.</p>
+                <div class="heading">
+                    <div class="faq-item">
+                        <h3 class="faq-heading">What is JavaScript?</h3>
+                        <p>JavaScript is a versatile programming language used to add interactivity to web pages.</p>
+                    </div>
+                    <button class="edit">Edit</button>
                 </div>
-                <div class="faq-item">
-                    <h3>How do I include JavaScript in my web page?</h3>
-                    <p>You can include JavaScript in your web page by using the tag. </p>
-                </div>
-                <div class="faq-item">
-                    <h3>What are variables in JavaScript?</h3>
-                    <p>Variables in JavaScript are used to store data values that can be changed later in the code.</p>
+
+                <div class="heading">
+                    <div class="faq-item">
+                        <h3 class="faq-heading">How do I include JavaScript in my web page?</h3>
+                        <p>You can include JavaScript in your web page by using the tag. </p>
+                    </div>
+                    <button class="edit">Edit</button>
                 </div>
             </div>
         </div>
