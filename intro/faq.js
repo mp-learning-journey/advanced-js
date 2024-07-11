@@ -1,6 +1,6 @@
 const faqItem = document.querySelectorAll(".faq-item");
 const faqItems = document.getElementById('faq-items');
-const faqEditButton = document.getElementsByClassName('edit');
+const faqEditButton = document.querySelectorAll(".edit");
 const faqHeading = document.getElementsByClassName('faq-heading');
 const form = document.getElementById("faq-form");
 const editForm = document.getElementById("edit-faq-form");
@@ -15,19 +15,27 @@ if(persistedFaq) {
     })
 }
 
-for(let x = 0; x < faqEditButton.length; x++) {
-    // Toggle click
-    faqItem[x].addEventListener('click', toggleFaq);
+faqItem.forEach(function (item){
+    item.addEventListener('click', toggleFaq)
+})
 
-    // Edit click
-    faqEditButton[x].addEventListener('click', function (e) {
-        e.preventDefault()
-        document.getElementById('editQuestion').value = faqHeading[x].innerText
+document.body.addEventListener('click', function (e) {
+    e.preventDefault();
 
-        // add the heading id to the form data-id for easy update
-        editForm.setAttribute('data-id', x);
-    })
-}
+    if(e.target.className === 'edit'){
+        const button = e.target;
+        const heading = button.previousElementSibling.firstElementChild;
+        const inputFiled =  document.getElementById('editQuestion');
+        inputFiled.value = heading.innerText;
+
+        document.getElementById("edit-faq-form").addEventListener('submit', function (e){
+            // e.preventDefault();
+            console.log("updated");
+            heading.innerText = this.editQuestion.value;
+            this.reset();
+        })
+    }
+})
 
 // update faq form
 editForm.addEventListener('submit', function (e){
@@ -48,8 +56,6 @@ form.addEventListener('submit', function (e){
     const question = this.question.value;
     const answer = this.answer.value;
 
-    // faqItems.insertAdjacentHTML("beforeend", faqHtml(question, answer))
-
     appendFaq(question, answer)
 
     // persist new faq
@@ -62,20 +68,33 @@ form.addEventListener('submit', function (e){
 })
 
 function appendFaq(question, answer) {
+    const heading = document.createElement('div');
+    heading.classList.add("heading");
     const newFaqItem = document.createElement('div');
+    const editButton = document.createElement('button');
+    editButton.classList.add("edit");
+    editButton.innerText = 'Edit';
+    heading.append(newFaqItem);
+    heading.append(editButton);
     newFaqItem.classList.add('faq-item');
-    newFaqItem.innerHTML = `<h3>${question}</h3><p>${answer}</p>`;
+    newFaqItem.innerHTML = `<h3 class="faq-heading">${question}</h3><p>${answer}</p>`;
     newFaqItem.addEventListener('click', toggleFaq);
-
-    faqItems.appendChild(newFaqItem);
+    faqItems.append(heading);
+    // editButton.addEventListener('click', function (e){
+    //     e.preventDefault();
+    //     clickEditButton(question);
+    // });
 }
 
 function faqHtml(question, answer) {
     return `
-    <div class="faq-item">
-        <h3>${question}</h3>
-        <p>${answer}</p>
-    </div>`
+        <div class="heading">
+            <div class="faq-item">
+                <h3 class="faq-heading">${question}</h3>
+                <p>You can include JavaScript in your web page by using the tag. </p>
+            </div>
+            <button class="edit">Edit</button>
+        </div>`
 }
 
 function toggleFaq(element) {
@@ -87,9 +106,12 @@ function toggleFaq(element) {
     element.currentTarget.classList.toggle('active');
 }
 
-const var1 = "dddd";
-const var2 = "jgmg";
+function clickEditButton(index) {
+    const inputFiled =  document.getElementById('editQuestion');
+    inputFiled.value = (typeof(index) == 'number') ? faqHeading[index].innerText : index;
 
-const string = `hhghghghghgh ${var1} ngnnvhffb ${var2}`
+    // add the heading id to the form data-id for easy update
+    editForm.setAttribute('data-id', index);
+}
 
 // Event bubbling
